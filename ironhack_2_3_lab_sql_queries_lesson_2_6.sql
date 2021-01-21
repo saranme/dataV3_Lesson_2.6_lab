@@ -62,23 +62,30 @@ SELECT *
 FROM customer
 WHERE active = 0;
 
-CREATE TABLE deleted_users(customer_id int, email varchar(255), date date);
-INSERT INTO deleted_users(customer_id,email,date)
-VALUES(16,SANDRA.MARTIN@sakilacustomer.org,'2021-01-20')
-VALUES(64,JUDITH.COX@sakilacustomer.org,'2021-01-20')
-VALUES(124,SHEILA.WELLS@sakilacustomer.org,'2021-01-20')
-VALUES(169,ERICA.MATTHEWS@sakilacustomer.org,'2021-01-20')
-VALUES(241,HEIDI.LARSON@sakilacustomer.org,'2021-01-20')
-VALUES(271,PENNY.NEAL@sakilacustomer.org,'2021-01-20')
-VALUES(315,KENNETH.GOODEN@sakilacustomer.org,'2021-01-20')
-VALUES(368,HARRY.ARCE@sakilacustomer.org,'2021-01-20')
-VALUES(406,NATHAN.RUNYON@sakilacustomer.org,'2021-01-20')
-VALUES(446,THEODORE.CULP@sakilacustomer.org,'2021-01-20')
-VALUES(482,MAURICE.CRAWLEY@sakilacustomer.org,'2021-01-20')
-VALUES(510,BEN.EASTER@sakilacustomer.org,'2021-01-20')
-VALUES(534,CHRISTIAN.JUNG@sakilacustomer.org,'2021-01-20')
-VALUES(558,JIMMIE.EGGLESTON@sakilacustomer.org,'2021-01-20')
-VALUES(592,TERRANCE.ROUSH@sakilacustomer.org,'2021-01-20')
+#CREATE TABLE deleted_users(customer_id int UNIQUE NOT NULL,
+#						   email varchar(255) DEFAULT NULL, 
+#                           date date)
+select * from deleted_users;
 
-DELETE FROM customer 
+CREATE TABLE deleted_users(customer_id int, email varchar(255), date date);
+
+INSERT INTO deleted_users(customer_id,email,date)
+VALUES
+(16,'SANDRA.MARTIN@sakilacustomer.org','2021-01-20'),
+(64,'JUDITH.COX@sakilacustomer.org','2021-01-20'),
+(124,'SHEILA.WELLS@sakilacustomer.org','2021-01-20'),
+(169,'ERICA.MATTHEWS@sakilacustomer.org','2021-01-20'),
+(241,'HEIDI.LARSON@sakilacustomer.org','2021-01-20'),
+(271,'PENNY.NEAL@sakilacustomer.org','2021-01-20'),
+(315,'KENNETH.GOODEN@sakilacustomer.org','2021-01-20'),
+(368,'HARRY.ARCE@sakilacustomer.org','2021-01-20'),
+(406,'NATHAN.RUNYON@sakilacustomer.org','2021-01-20'),
+(446,'THEODORE.CULP@sakilacustomer.org','2021-01-20'),
+(482,'MAURICE.CRAWLEY@sakilacustomer.org','2021-01-20'),
+(510,'BEN.EASTER@sakilacustomer.org','2021-01-20'),
+(534,'CHRISTIAN.JUNG@sakilacustomer.org','2021-01-20'),
+(558,'JIMMIE.EGGLESTON@sakilacustomer.org','2021-01-20'),
+(592,'TERRANCE.ROUSH@sakilacustomer.org','2021-01-20');
+
+DELETE FROM sakila.customer 
 WHERE customer_id IN (16,64,124,169,241,271,315,368,406,446,482,510,534,558,592);
